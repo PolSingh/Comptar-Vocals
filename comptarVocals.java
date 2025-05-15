@@ -1,43 +1,40 @@
-package calculadora.java;
+
 import java.util.Scanner;
+
 public class ComptarVocals {
-public static void main(String[] args) {
-//Step 1: read the user input
-System.out.println("Please, insert the message:");
-Scanner in = new Scanner(System.in);
-String input = in.nextLine();
-//Step 2: read the amount of 'a' letters within input
-int a = 0;
-char[] ch = input.toLowerCase().toCharArray();
-for(int k = 0; k < ch.length; k++)
-if(ch[k] == 'a') a++;
-//Step 3: read the amount of 'e' letters within input
-int e = 0;
-ch = input.toLowerCase().toCharArray();
-for(int k = 0; k < ch.length; k++)
-if(ch[k] == 'e') e++;
-//Step 4: read the amount of 'i' letters within input
-int i = 0;
-ch = input.toLowerCase().toCharArray();
-for(int k = 0; k < ch.length; k++)
-if(ch[k] == 'i') i++;
-//Step 5: read the amount of 'o' letters within input
-int o = 0;
-ch = input.toLowerCase().toCharArray();
-for(int k = 0; k < ch.length; k++)
-if(ch[k] == 'o') o++;
-//Step 6: read the amount of 'u' letters within input
-int u = 0;
-ch = input.toLowerCase().toCharArray();
-for(int k = 0; k < ch.length; k++)
-if(ch[k] == 'u') u++;
-//Step 7: write the output
-System.out.println(String.format("Amount of 'a': %d", a));
-System.out.println(String.format("Amount of 'e': %d", e));
-System.out.println(String.format("Amount of 'i': %d", i));
-System.out.println(String.format("Amount of 'o': %d", o));
-System.out.println(String.format("Amount of 'u': %d", u));
-System.out.println(String.format("Total amount of vowels: %d", a + e + i + o + u));
-in.close();
-}
+    public static void main(String[] args) {
+        // Crear l'objecte per llegir dades del teclat
+        Scanner teclat = new Scanner(System.in);
+
+        // Demanar a l'usuari una frase
+        System.out.print("Introdueix un text: ");
+        String frase = teclat.nextLine().toLowerCase();
+
+        // Tancar el lector (per bones pràctiques)
+        teclat.close();
+
+        // Comptadors de vocals
+        int a = 0, e = 0, i = 0, o = 0, u = 0;
+
+        // Recórrer cada lletra de la frase
+        for (int j = 0; j < frase.length(); j++) {
+            char lletra = frase.charAt(j);
+
+            // Comprovar si és una vocal (amb o sense accent)
+            if (lletra == 'a' || lletra == 'à' || lletra == 'á') a++;
+            else if (lletra == 'e' || lletra == 'è' || lletra == 'é') e++;
+            else if (lletra == 'i' || lletra == 'í' || lletra == 'ï') i++;
+            else if (lletra == 'o' || lletra == 'ò' || lletra == 'ó') o++;
+            else if (lletra == 'u' || lletra == 'ú' || lletra == 'ü') u++;
+        }
+
+        // Mostrar els resultats per pantalla
+        System.out.println("Vocals trobades:");
+        System.out.println("A: " + a);
+        System.out.println("E: " + e);
+        System.out.println("I: " + i);
+        System.out.println("O: " + o);
+        System.out.println("U: " + u);
+        System.out.println("Total: " + (a + e + i + o + u));
+    }
 }
